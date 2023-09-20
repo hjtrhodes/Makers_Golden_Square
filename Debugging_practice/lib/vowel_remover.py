@@ -8,7 +8,10 @@ class VowelRemover:
     def remove_vowels(self):
         i = 0
         while i < len(self.text):
-            if self.text[i].lower() in self.vowels:
-                self.text = self.text[:i] + self.text[i+1:]
+            for char in self.text.lower():
+                if char in self.vowels:
+                    self.text = self.text.replace(char, "")
             i += 1
         return self.text
+
+# It is removing every SECOND vowel?

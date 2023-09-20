@@ -6,19 +6,12 @@ class LetterCounter:
 
     def calculate_most_common(self):
         counter = {}
-        most_common = None
-        most_common_count = 1
-        for char in self.text:
-            if not char.isalpha():
-                continue
-            counter[char] = counter.get(char, 1) + 1
-            if counter[char] > most_common_count:
-                most_common = char
-                most_common_count += counter[char]
-        return [most_common_count, most_common]
-
-
-counter = LetterCounter("Digital Punk")
-print(counter.calculate_most_common())
-# Intended output:
-# [2, "i"]
+        for char in self.text.lower():
+            if char.isalpha() and char not in counter:
+                counter[char] = 1
+            elif char.isalpha() == False:
+                pass
+            else:
+                counter[char] = counter[char] + 1
+        most_common = max(counter, key= lambda x: counter[x])
+        return [counter[most_common], most_common]
